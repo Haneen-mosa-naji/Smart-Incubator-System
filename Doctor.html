@@ -138,25 +138,7 @@
               Monitor and review detailed health reports and medical history
             </p>
             </div>
-                <!-- ════════ Toolbar ════════ 
-  <div class="button-header">
-
-    <button class="tab-btn " data-page="FullReports">
-      <i class="fa-solid fa-file-medical"></i>
-      Reports
-    </button>
-
-    <button class="tab-btn" data-page="HourlyReports">
-      <i class="fa-solid fa-clock-rotate-left"></i>
-      Hourly
-    </button>
-
-    <button class="tab-btn" data-page="ChildData">
-      <i class="fa-solid fa-baby"></i>
-      Children
-    </button>
-
-  </div>-->
+   
 
           </div>
         
@@ -172,7 +154,7 @@
                   <i class="fa-solid fa-magnifying-glass"></i>
                   <input class="search-inp" id="searchInp" type="text" placeholder="Search users..." />
                 </div>
-               <select  class="filter-select" id="roleFilter">
+               <select  class="filter-select" id="reportsFilter">
   <option  value="all">All Reports</option>
 
   <optgroup label="Regular Reports">
@@ -281,23 +263,11 @@ Archive
 
         <select class="filter-select" id="hrFilter">
           <option value="all">All Reports</option>
-
-          <optgroup label="Health Status">
             <option value="normal">Normal</option>
             <option value="warning">Warning</option>
             <option value="critical">Critical</option>
-          </optgroup>
-
-          <optgroup label="Vital Signs">
-            <option value="temperature">Temperature</option>
-            <option value="oxygen">Oxygen Level</option>
-            <option value="heart">Heart Rate</option>
-            <option value="humidity">Humidity</option>
-          </optgroup>
         </select>
-
       </div>
-
     </div>
 
     <div class="table-scroll">
@@ -358,24 +328,109 @@ Archive
   </button>
 
 </section>
- <!----------------------------------------------------section3:Child Data -------------------------------->
+<!----------------------------------------------------section3:Child Data -------------------------------->
 
-        <section id="ChildData" class="page ">
+<section id="ChildData" class="page">
 
-          <div class="page-header ">
-           <div class="text-header">
-             <h1 class="page-title">Child Data</h1>
-            <p class="page-sub ps-2">
-                View child profiles and personal information
+  <div class="page-header">
+    <div class="text-header">
+      <h1 class="page-title">Child Data</h1>
+      <p class="page-sub ps-2">
+        View child profiles and personal information
+      </p>
+    </div>
+  </div>
 
-            </p>
-            </div>
-              
-          </div>
+  <div class="table-card">
 
-        </section>
+    <div class="table-header">
 
+      <div class="table-title">
+        <i class="fa-solid fa-baby"></i>
+        Child Data
+      </div>
 
+      <div class="table-header-bottom d-flex gap-3 align-items-center">
+
+        <div class="search-wrap">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input
+            class="search-inp"
+            id="childSearchInp"
+            type="text"
+            placeholder="Search child data..."
+          />
+        </div>
+
+        <select class="filter-select" id="childGenderFilter">
+          <option value="all">All Genders</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+
+      </div>
+
+    </div>
+
+    <div class="table-scroll">
+  <table class="child-table">
+    <thead>
+      <tr>
+        <th>Child ID</th>
+        <th>Child Name</th>
+        <th>Incubator ID</th>
+        <th>Birth Week</th>
+        <th>Gender</th>
+        <th>Blood Type</th>
+        <th>Birth Weight</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody id="child-table"></tbody>
+  </table>
+</div>
+
+<div class="mob-cards" id="childMobCards"></div>
+
+    <div class="pagination mt-3">
+
+      <div class="pg-info my-3" id="childPgInfo"></div>
+
+      <div class="pg-btns">
+
+        <button class="pg-btn" id="childPgFirst" title="First">
+          <i class="fa-solid fa-angles-left"></i>
+        </button>
+
+        <button class="pg-btn" id="childPgPrev" title="Previous">
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+
+        <div id="childPages" class="pages"></div>
+
+        <button class="pg-btn" id="childPgNext" title="Next">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+
+        <button class="pg-btn" id="childPgLast" title="Last">
+          <i class="fa-solid fa-angles-right"></i>
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="mob-cards" id="childMobCards"></div>
+
+  </div>
+
+  <button type="button" id="childArchiveBtn" class="archiveBtn">
+    <i class="fa-solid fa-box-archive"></i>
+    Archive
+  </button>
+
+</section>
  <!----------------------------------------------------section4:Archive-------------------------------->
 
 <section id="Archive" class="page">
@@ -397,7 +452,7 @@ Archive
     </div>
 
     <div class="table-scroll">
-      <table>
+      <table  id="archiveMainTable" >
         <thead id="archiveHead"></thead>
         <tbody id="archiveTable"></tbody>
       </table>
@@ -474,7 +529,7 @@ Archive
 <script src="assets/js/pdfHourlyReport.js"></script>
     <script src="./assets/js/hourlyReports.js"></script>
     <script src="./assets/js/archive.js"></script>
-
+    <script src="./assets/js/childData.js"></script>
     <script src="./assets/js/doctor.js"></script>
   </body>
 
