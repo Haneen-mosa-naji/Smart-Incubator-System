@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Admin Panel-Smart-Incubator-System</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link href="./assets/css/main.css" rel="stylesheet">
+  <link href="./assets/css/Admin.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <!--  start loader -->
+  <div class="loader-overlay d-none">
+
+    <svg class="smart-loader" width="180" height="180" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- outer circle -->
+      <circle cx="150" cy="150" r="120" fill="none" stroke="#00AEEF" stroke-width="6" stroke-dasharray="80 40"
+        stroke-linecap="round" class="loader-ring">
+
+
+      </circle>
+
+      <!-- incubator (60x50) -->
+      <rect x="120" y="135" width="60" height="50" rx="8" fill="#E6F7FF" stroke="#00AEEF" stroke-width="2" />
+
+      <!-- heartbeat (scaled up + centered) -->
+      <path d="M75 160
+             Q105 135 130 160
+             T175 160
+             T225 160" fill="none" stroke="#FF4D6D" stroke-width="4">
+
+        <animate attributeName="stroke-width" values="2.5;5;2.5" dur="0.8s" repeatCount="indefinite" />
+      </path>
+
+      <!-- text -->
+      <text x="150" y="225" font-size="14" font-weight="bold" text-anchor="middle" fill="#333" font-family="Arial">
+        Smart Incubator
+      </text>
+
+    </svg>
+
+  </div>
+  <!--  end loader -->
+
+  <body>
+
+
+
+    <!-- Sidebar overlay (mobile) -->
+    <div id="sbOverlay" class="sb-overlay"></div>
+<!-- Top Menu Bar (mobile only) -->
+<div class="bg-topbar-menu-btn">
+  <button class="topbar-menu-btn">
+    <i class="fa-solid fa-bars"></i> Smart Incubator
+  </button>
+</div>
+
+
+    <div class="adminpage  ">
+
+      <!-- SIDEBAR -->
+
+      <div class="sidenav" id="sidebar">
+        <div class="sidenav-header">
+
+          <img src="./assets/img/logonav.png" class="logo-nav">
+
+          <div class="sidenav-header-text d-flex flex-column">
+            <span class="sidenav-header-name">Smart Incubator System</span>
+            <span class="sidenav-header-sub">Admin Panel</span>
+          </div>
+          <button class="close-sidebar-btn" id="close-sidebar-btn">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+        </div>
+
+        <div class="sidenav-section ">
+          <div class="sidenav-label">Management</div>
+          <ul>
+            <li>
+              <a href="#users">
+                <i class="fa-solid fa-users"></i>
+                <span class="link-text">All Users</span>
+              </a>
+            </li>
+            <li>
+              <a href="#create">
+                <i class="fa-solid fa-user-plus"></i>
+                <span class="link-text">Create User</span>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+
+        <div class="sidenav-footer">
+          <div class="user-av" id="userAv"></div>
+
+          <div class="user-info">
+            <div class="user-name" id="userName"></div>
+            <div class="user-namefull" id="usernamefull"></div>
+            <div class="user-role" id="userRole"></div>
+          </div>
+
+          <button class="logout-btn" id="logoutBtn" aria-label="Logout">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+
+
+      <!-- CONTENT -->
+      <div class="content">
+
+        <!---------------------------------------ALL USERS PAGE --------------------------------------------------------------->
+        <section id="users" class="page">
+          <div class="page-header  ">
+            <div class="text-header">
+              <h2 class="page-title">User Administration</h2>
+              <p class="page-sub ps-2">View and manage all registered users in the system</p>
+            </div>
+
+            <div class="button-header d-flex align-items-center  ">
+              <button type="button" id="create-btn" class="tab-btn  create-btn">
+                <i class="fa-solid fa-user-plus"></i>
+                New User
+              </button>
+            </div>
+          </div>
+          <div class="stats-row ">
+            <div class="stat-card">
+              <div class="sc-label">Total Users</div>
+              <div class="sc-val">47</div>
+            </div>
+            <div class="stat-card">
+              <div class="sc-label">Active</div>
+              <div class="sc-val">38</div>
+            </div>
+            <div class="stat-card">
+              <div class="sc-label">Inactive</div>
+              <div class="sc-val">9</div>
+            </div>
+          </div>
+
+
+          <div class="table-card">
+            <div class="table-header">
+              <div class="table-header-left">
+                <h3 class="th-title">All Users</h3>
+                <p class="th-sub">47 users registered in the system</p>
+              </div>
+              <div class="table-header-bottom d-flex gap-3 align-items-center">
+                <div class="search-wrap">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input class="search-inp" id="searchInp" type="text" placeholder="Search users..." />
+                </div>
+                <select class="filter-select" id="roleFilter">
+                  <option value="">All Roles</option>
+                  <option value="Admin">Admin</option>
+                  <option value="Doctor">Doctor</option>
+                  <option value="Nurse">Nurse</option>
+                  <option value="Engineer">Engineer</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-scroll ">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="userTable"></tbody>
+
+              </table>
+            </div>
+            <div class="mob-cards" id="mobCards"></div>
+
+            <div class="pagination mt-3 ">
+
+              <div class="pg-info my-3" id="pgInfo"></div>
+
+              <div class="pg-btns">
+
+                <button class="pg-btn" id="pgFirst" title="First">
+                  <i class="fa-solid fa-angles-left"></i>
+                </button>
+
+                <button class="pg-btn" id="pgPrev" title="Previous">
+                  <i class="fa-solid fa-angle-left"></i>
+                </button>
+
+                <div id="pages" class="pages"></div>
+
+                <button class="pg-btn" id="pgNext" title="Next">
+                  <i class="fa-solid fa-angle-right"></i>
+                </button>
+
+                <button class="pg-btn" id="pgLast" title="Last">
+                  <i class="fa-solid fa-angles-right"></i>
+                </button>
+
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!------------------------------------------- CREATE USER PAGE -------------------------------------------------->
+        <section id="create" class="page ">
+
+       <div class="page-header ">
+               <!-- <div class="bg-topbar-menu-btn">
+              <button class="topbar-menu-btn" id="topbar-menu-btn" aria-label="Open menu">
+                <i class="fa-solid fa-bars"></i>
+              </button>
+            </div>-->
+
+            <div class="text-header ">
+              <h2 class="page-title">Create New User</h2>
+              <p class="page-sub ps-2">Add a new team member to the system</p>
+            </div>
+
+            <div class="button-header d-flex align-items-center  ">
+              <button type="button" id="View-btn" class="tab-btn ">
+                <i class="fa-solid fa-users"></i>
+                View All Users
+              </button>
+            </div>
+
+          </div>
+
+          <div class="form-card ">
+            <form id="registerForm">
+              <div class="form-section-title d-flex flex-row justify-content-between">
+                <span>Personal Information</span>
+                <button type="button" id="clearBtn" class="clearBtn">
+                  <i class="fa-solid fa-trash"></i>
+                  Clear
+                </button>
+
+              </div>
+              <div class="form-grid mb-2">
+
+                <div class="form-group form-full">
+                  <label class="form-label-custom">Full Name <span>*</span></label>
+                  <div class="input-icon-wrap">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" class="form-control-custom" id="fullName"
+                      placeholder="e.g. Omar Walid Jamal Abdullah" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label-custom">Email <span>*</span></label>
+                  <div class="input-icon-wrap">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" class="form-control-custom" id="email" placeholder="xxxxxx@hospital.com"
+                      required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label-custom">Phone Number <span>*</span></label>
+                  <div class="input-icon-wrap">
+                    <i class="fa-solid fa-phone"></i>
+                    <input type="text" class="form-control-custom" id="phoneNumber" placeholder="+970 5X XXX XXXX"
+                      required>
+                  </div>
+                </div>
+
+                <div class="form-group form-full">
+                  <label class="form-label-custom">Password <span>*</span></label>
+                  <div class="input-icon-wrap" style="position:relative;">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" class="form-control-custom" id="password" placeholder="xxxxxxxx" required>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="form-section-title">Assign Role</div>
+              <div class="role-grid">
+
+                <div>
+                  <input type="radio" name="role" id="r-admin" value="Admin" class="role-option">
+                  <label for="r-admin" class="role-label"><i class="fa-solid fa-shield-halved"></i>Admin</label>
+                </div>
+                <div>
+                  <input type="radio" name="role" id="r-doctor" value="Doctor" class="role-option">
+                  <label for="r-doctor" class="role-label"><i class="fa-solid fa-user-doctor"></i>Doctor</label>
+                </div>
+                <div>
+                  <input type="radio" name="role" id="r-nurse" value="Nurse" class="role-option">
+                  <label for="r-nurse" class="role-label"><i class="fa-solid fa-kit-medical"></i>Nurse</label>
+                </div>
+                <div>
+                  <input type="radio" name="role" id="r-eng" value="Engineer" class="role-option">
+                  <label for="r-eng" class="role-label"><i class="fa-solid fa-screwdriver-wrench"></i>Engineer</label>
+                </div>
+                <!--   <div>
+                  <input type="radio" name="role" id="r-parent" value="Parent" class="role-option">
+                  <label for="r-parent" class="role-label"><i class="fa-solid fa-heart"></i>Parent</label>
+                </div>-->
+
+              </div>
+
+              <button type="submit" class="btn-submit">
+                <i class="fa-solid fa-user-plus"></i>
+                Register User
+              </button>
+
+              <div class="msg-success" id="msgSuccess">
+                <i class="fa-solid fa-circle-check"></i>
+                User registered successfully!
+              </div>
+              <div class="msg-error" id="msgError">
+                <i class="fa-solid fa-circle-xmark"></i>
+                <span id="msgErrorText">Something went wrong. Please try again.</span>
+              </div>
+
+            </form>
+          </div>
+
+        </section>
+
+      </div> <!-- end .content -->
+
+    </div><!-- end .adminpage -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/admin.js"></script>
+  </body>
+
+</html>
