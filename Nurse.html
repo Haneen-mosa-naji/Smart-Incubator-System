@@ -7,15 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <link href="./assets/css/main.css" rel="stylesheet">
-  <link href="./assets/css/doctor.css" rel="stylesheet">
+  <link href="./assets/css/nurse.css" rel="stylesheet">
 
 </head>
 
@@ -57,14 +57,14 @@
   <body>
 
 
-   
+
     <div id="sbOverlay" class="sb-overlay"></div>
-<!-- Top Menu Bar (mobile only) -->
-<div class="bg-topbar-menu-btn">
-  <button class="topbar-menu-btn">
-    <i class="fa-solid fa-bars"></i> Smart Incubator
-  </button>
-</div>
+    <!-- Top Menu Bar (mobile only) -->
+    <div class="bg-topbar-menu-btn">
+      <button class="topbar-menu-btn">
+        <i class="fa-solid fa-bars"></i> Smart Incubator
+      </button>
+    </div>
 
     <div class="adminpage  ">
 
@@ -85,72 +85,98 @@
         </div>
 
         <div class="sidenav-section ">
-          <div class="sidenav-label">Sections</div>
+          <P class="sidenav-label">VIEW</P>
           <ul>
             <li>
               <a href="#FullReports">
-               <i class="fa-solid fa-file-medical"></i>
-                <span class="link-text">Full Reports</span>
+                <i class="fa-solid fa-file-medical"></i>
+                <span class="link-text">View Full Reports</span>
               </a>
             </li>
             <li>
               <a href="#HourlyReports">
                 <i class="fa-solid fa-clock-rotate-left"></i>
-               <span class="link-text">Hourly Reports</span>
+                <span class="link-text">View Hourly Reports</span>
               </a>
             </li>
             <li>
               <a href="#ChildData">
-               <i class="fa-solid fa-baby"></i>
-                <span class="link-text">Child Data</span>
+                <i class="fa-solid fa-baby"></i>
+                <span class="link-text">View Child Data</span>
               </a>
             </li>
-             <li>
+
+          </ul>
+          <P class="sidenav-label">CREATE</P>
+          <ul>
+            <li>
+              <a href="#CreateFullReports">
+                <i class="fa-solid fa-file-circle-plus"></i>
+                <span class="link-text">Create Full Reports</span>
+              </a>
+            </li>
+            <li>
+              <a href="#CreateHourlyReports">
+                <i class="fa-solid fa-calendar-plus"></i>
+                <span class="link-text">Create Reports</span>
+              </a>
+            </li>
+            <li>
+              <a href="#CreateChildData">
+                <i class="fa-solid fa-user-plus"></i>
+                <span class="link-text">Create Data</span>
+              </a>
+            </li>
+
+          </ul>
+          <P class="sidenav-label">Messages</P>
+          <ul>
+            <li>
               <a href="#Messages">
-               <i class="fa-solid fa-baby"></i>
-                <span class="link-text">Message</span>
+                <i class="fa-solid fa-comments"></i>
+                <span class="link-text">Messages</span>
               </a>
             </li>
           </ul>
-
         </div>
 
         <div class="sidenav-footer">
-  <div class="user-av" id="userAv"></div>
+          <div class="user-av" id="userAv"></div>
 
-  <div class="user-info">
-    <div class="user-name" id="userName"></div>
-     <div class="user-namefull" id="usernamefull"></div>
-    <div class="user-role" id="userRole"></div>
-  </div>
+          <div class="user-info">
+            <div class="user-name" id="userName"></div>
+            <div class="user-namefull" id="usernamefull"></div>
+            <div class="user-role" id="userRole"></div>
+          </div>
 
-  <button class="logout-btn" id="logoutBtn" aria-label="Logout">
-    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-  </button>
-</div>
+          <button class="logout-btn" id="logoutBtn" aria-label="Logout">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </button>
+        </div>
       </div>
 
 
       <!-- CONTENT -->
       <div class="content">
 
-        <!----------------------------------------------------section1:Full Reports -------------------------------->
+        <!----------------------------------------------------section1:VIEW Full Reports -------------------------------->
+        <!-- VIEW -->
         <section id="FullReports" class="page">
           <div class="page-header ">
-           <div class="text-header">
-             <h1 class="page-title">Full Medical Reports</h1>
-            <p class="page-sub ps-2">
-              Monitor and review detailed health reports and medical history
-            </p>
+            <div class="text-header">
+              <h1 class="page-title">Full Medical Reports</h1>
+              <p class="page-sub ps-2">
+                Monitor and review detailed health reports and medical history
+              </p>
             </div>
-   
+
 
           </div>
-        
+
           <div class="table-card">
             <div class="table-header">
               <div class="table-title">
-               <i class="fa-solid fa-table-list"></i> All Reports
+                <i class="fa-solid fa-table-list"></i> All Reports
               </div>
 
 
@@ -159,22 +185,22 @@
                   <i class="fa-solid fa-magnifying-glass"></i>
                   <input class="search-inp" id="searchInp" type="text" placeholder="Search users..." />
                 </div>
-               <select  class="filter-select" id="reportsFilter">
-  <option  value="all">All Reports</option>
+                <select class="filter-select" id="reportsFilter">
+                  <option value="all">All Reports</option>
 
-  <optgroup label="Regular Reports">
-    <option value="hourly">Hourly</option>
-    <option value="daily">Daily</option>
-    <option value="weekly">Weekly</option>
-    <option value="monthly">Monthly</option>
-  </optgroup>
+                  <optgroup label="Regular Reports">
+                    <option value="hourly">Hourly</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                  </optgroup>
 
-  <optgroup label="Special Reports">
-    <option value="emergency">Emergency</option>
-    <option value="discharge">Discharge</option>
-    <option value="incident">Incident</option>
-  </optgroup>
-</select>
+                  <optgroup label="Special Reports">
+                    <option value="emergency">Emergency</option>
+                    <option value="discharge">Discharge</option>
+                    <option value="incident">Incident</option>
+                  </optgroup>
+                </select>
               </div>
             </div>
             <div class="table-scroll ">
@@ -183,16 +209,16 @@
                   <tr>
                     <th>Report ID</th>
                     <th>Child Name</th>
-                  
+
                     <th>Nurse Name</th>
-                  
+
                     <th>Report Type</th>
                     <th>Date</th>
                     <th>Time</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
-             <tbody id="fullReportsTable"></tbody>
+                <tbody id="fullReportsTable"></tbody>
 
               </table>
             </div>
@@ -226,350 +252,497 @@
 
             <div class="mob-cards" id="fullReportsMobCards"></div>
           </div>
-<button type="button" id="archiveBtn" class="archiveBtn">
-    <i class="fa-solid fa-box-archive"></i>
-Archive
-                </button>
-        
-        </section>
-       <!----------------------------------------------------section2:Hourly Reports -------------------------------->
-
-<section id="HourlyReports" class="page">
-
-  <div class="page-header">
-    <div class="text-header">
-      <h1 class="page-title">Hourly Reports</h1>
-      <p class="page-sub ps-2">
-        Track hourly health updates and monitoring data
-      </p>
-    </div>
-  </div>
-
-  <div class="table-card">
-
-    <div class="table-header">
-
-      <div class="table-title">
-        <i class="fa-solid fa-clock-rotate-left"></i>
-        Hourly Reports
-      </div>
-
-      <div class="table-header-bottom d-flex gap-3 align-items-center">
-
-        <div class="search-wrap">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input
-            class="search-inp"
-            id="hrSearchInp"
-            type="text"
-            placeholder="Search hourly reports..."
-          />
-        </div>
-
-        <select class="filter-select" id="hrFilter">
-          <option value="all">All Reports</option>
-            <option value="normal">Normal</option>
-            <option value="warning">Warning</option>
-            <option value="critical">Critical</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="table-scroll">
-     <table class="hourly-table">
-        <thead>
-         <tr>
-  <th>Report ID</th>
-  <th>Child Name</th>
-  <th>Nurse Name</th>
-  <th>Status</th>
-  <th>Date</th>
-  <th>Time</th>
-  <th>Actions</th>
-</tr>
-        </thead>
-
-        <tbody id="hourlyReportsTable"></tbody>
-      </table>
-    </div>
-
-    <div class="pagination mt-3">
-
-      <div class="pg-info my-3" id="hrPgInfo"></div>
-
-      <div class="pg-btns">
-
-        <button class="pg-btn" id="hrPgFirst" title="First">
-          <i class="fa-solid fa-angles-left"></i>
-        </button>
-
-        <button class="pg-btn" id="hrPgPrev" title="Previous">
-          <i class="fa-solid fa-angle-left"></i>
-        </button>
-
-        <div id="hrPages" class="pages"></div>
-
-        <button class="pg-btn" id="hrPgNext" title="Next">
-          <i class="fa-solid fa-angle-right"></i>
-        </button>
-
-        <button class="pg-btn" id="hrPgLast" title="Last">
-          <i class="fa-solid fa-angles-right"></i>
-        </button>
-
-      </div>
-
-    </div>
-
-    <div class="mob-cards" id="hourlyReportsMobCards"></div>
-
-  </div>
-
-  <button type="button" id="hrArchiveBtn" class="archiveBtn">
-    <i class="fa-solid fa-box-archive"></i>
-    Archive
-  </button>
-
-</section>
-<!----------------------------------------------------section3:Child Data -------------------------------->
-
-<section id="ChildData" class="page">
-
-  <div class="page-header">
-    <div class="text-header">
-      <h1 class="page-title">Child Data</h1>
-      <p class="page-sub ps-2">
-        View child profiles and personal information
-      </p>
-    </div>
-  </div>
-
-  <div class="table-card">
-
-    <div class="table-header">
-
-      <div class="table-title">
-        <i class="fa-solid fa-baby"></i>
-        Child Data
-      </div>
-
-      <div class="table-header-bottom d-flex gap-3 align-items-center">
-
-        <div class="search-wrap">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input
-            class="search-inp"
-            id="childSearchInp"
-            type="text"
-            placeholder="Search child data..."
-          />
-        </div>
-
-        <select class="filter-select" id="childGenderFilter">
-          <option value="all">All Genders</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
-
-      </div>
-
-    </div>
-
-    <div class="table-scroll">
-  <table class="child-table">
-    <thead>
-      <tr>
-        <th>Child ID</th>
-        <th>Child Name</th>
-        <th>Incubator ID</th>
-        <th>Birth Week</th>
-        <th>Gender</th>
-        <th>Blood Type</th>
-        <th>Birth Weight</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-
-    <tbody id="child-table"></tbody>
-  </table>
-</div>
-
-
-    <div class="pagination mt-3">
-
-      <div class="pg-info my-3" id="childPgInfo"></div>
-
-      <div class="pg-btns">
-
-        <button class="pg-btn" id="childPgFirst" title="First">
-          <i class="fa-solid fa-angles-left"></i>
-        </button>
-
-        <button class="pg-btn" id="childPgPrev" title="Previous">
-          <i class="fa-solid fa-angle-left"></i>
-        </button>
-
-        <div id="childPages" class="pages"></div>
-
-        <button class="pg-btn" id="childPgNext" title="Next">
-          <i class="fa-solid fa-angle-right"></i>
-        </button>
-
-        <button class="pg-btn" id="childPgLast" title="Last">
-          <i class="fa-solid fa-angles-right"></i>
-        </button>
-
-      </div>
-
-    </div>
-
-    <div class="mob-cards" id="childMobCards"></div>
-
-  </div>
-
-  <button type="button" id="childArchiveBtn" class="archiveBtn">
-    <i class="fa-solid fa-box-archive"></i>
-    Archive
-  </button>
-
-</section>
- <!----------------------------------------------------section4:Archive-------------------------------->
-
-<section id="Archive" class="page">
-
-  <div class="page-header">
-    <div class="text-header">
-      <h1 class="page-title">Archive</h1>
-      <p class="page-sub">Access archived medical reports and records</p>
-    </div>
-  </div>
-
-  <div class="table-card">
-
-    <div class="table-header">
-      <div class="table-title">
-        <i class="fa-solid fa-box-archive"></i>
-        <span id="archiveTitle">Archived Reports</span>
-      </div>
-    </div>
-
-    <div class="table-scroll">
-      <table  id="archiveMainTable" >
-        <thead id="archiveHead"></thead>
-        <tbody id="archiveTable"></tbody>
-      </table>
-    </div>
-
-    <div class="pagination mt-3">
-      <div class="pg-info my-3" id="archivePgInfo"></div>
-
-      <div class="pg-btns">
-        <button class="pg-btn" id="archivePgFirst">
-          <i class="fa-solid fa-angles-left"></i>
-        </button>
-
-        <button class="pg-btn" id="archivePgPrev">
-          <i class="fa-solid fa-angle-left"></i>
-        </button>
-
-        <div id="archivePages" class="pages"></div>
-
-        <button class="pg-btn" id="archivePgNext">
-          <i class="fa-solid fa-angle-right"></i>
-        </button>
-
-        <button class="pg-btn" id="archivePgLast">
-          <i class="fa-solid fa-angles-right"></i>
-        </button>
-      </div>
-    </div>
-
-  </div>
-
-</section>
- <!----------------------------------------------------section5: Messages -------------------------------->
-
-<section id="Messages" class="page">
-
-  <div class="page-header">
-    <div class="text-header">
-      <h1 class="page-title">Messages</h1>
-      <p class="page-sub ps-2">View and manage your inbox and sent messages</p>
-    </div>
-  </div>
-
-  <!-- ── Chat Layout ── -->
-  <div class="msg-layout">
-
-    <!-- LEFT: Conversations list -->
-    <div class="msg-sidebar">
-
-      <div class="msg-sb-head">
-        <div class="table-title" style="font-size:13px;">
-          <i class="fa-solid fa-inbox"></i> Inbox
-        </div>
-        <div class="msg-search-wrap">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input class="msg-search-inp" id="msgSearchInp" type="text" placeholder="Search..." />
-        </div>
-        <div style="display:flex; gap:6px; margin-top:10px; flex-wrap:wrap;">
-          <button class="msg-filter-btn active" data-filter="all">All</button>
-          <button class="msg-filter-btn" data-filter="unread">Unread</button>
-          <button class="msg-filter-btn" data-filter="sent">Sent</button>
-        </div>
-      </div>
-
-      <div class="msg-conv-list" id="msgConvList">
-        <!-- rendered by JS -->
-      </div>
-
-    </div>
-
-    <!-- RIGHT: Message thread -->
-    <div class="msg-thread-area">
-
-      <!-- Empty state -->
-      <div class="msg-empty" id="msgEmpty">
-        <i class="fa-solid fa-comments"></i>
-        <p>Select a conversation to view messages</p>
-      </div>
-
-      <!-- Thread -->
-      <div class="msg-thread" id="msgThread" style="display:none;">
-
-        <div class="msg-thread-head" id="msgThreadHead">
-          <!-- name + status filled by JS -->
-        </div>
-
-        <div class="msg-bubbles" id="msgBubbles">
-          <!-- bubbles rendered by JS -->
-        </div>
-
-        <!-- Compose -->
-        <div class="msg-compose">
-          <textarea
-            class="msg-compose-inp"
-            id="msgComposeInp"
-            placeholder="Type your message..."
-            rows="1"
-          ></textarea>
-          <button class="msg-send-btn" id="msgSendBtn" title="Send">
-            <i class="fa-solid fa-paper-plane"></i>
+          <button type="button" id="archiveBtn" class="archiveBtn">
+            <i class="fa-solid fa-box-archive"></i>
+            Archive
           </button>
-        </div>
 
-      </div>
+        </section>
 
-    </div>
+        <!----------------------------------------------------section2:Create Full Reports -------------------------------->
+        <!-- CREATE -->
+        <section id="CreateFullReports" class="page">
+          <div class="card">
+            <div class="card-head">
+              <div class="card-title"><i class="fa-solid fa-file-pen"></i>New Medical Report</div>
+            </div>
+            <div class="card-body">
+              <form id="repForm">
+                <div class="fg fg-2">
+                  <div class="sec-div">Report Info</div>
+                  <div class="fgrp">
+                    <label class="flbl">Child ID <span>*</span></label>
+                    <input class="finp" type="text" placeholder="e.g. C-001" required>
+                  </div>
 
-  </div>
+                  <div class="fgrp">
+                    <label class="flbl">User ID (Doctor/Nurse) <span>*</span></label>
+                    <input class="finp" type="text" placeholder="e.g. U-012">
+                  </div>
 
-</section>
-  <!----------------------------------------------------section5: -------------------------------->
+                  <div class="fgrp">
+                    <label class="flbl">Report Type <span>*</span></label>
+                    <select class="fsel">
+                      <option value="">Select type</option>
+                      <option>Daily</option>
+                      <option>Weekly</option>
+                      <option>Emergency</option>
+                      <option>Discharge</option>
+                    </select>
+                  </div>
 
-   <!----------------------------------------------------section5: -------------------------------->
+                  <div class="fgrp">
+                    <label class="flbl">Report Interval</label>
+                    <input class="finp" type="text" placeholder="e.g. 6h / 12h / 24h">
+                  </div>
 
-    <!----------------------------------------------------section5: -------------------------------->
+                  <div class="fgrp">
+                    <label class="flbl">Report Date <span>*</span></label>
+                    <input type="date" lang="en" dir="ltr" class="finp">
+                  </div>
+
+                  <div class="fgrp">
+                    <label class="flbl">Report Time <span>*</span></label>
+                    <input class="finp" type="time">
+                  </div>
+
+                  <div class="fgrp">
+                    <label class="flbl">Next Check Time</label>
+                    <input class="finp" type="datetime-local">
+                  </div>
+
+                  <div class="sec-div">Vital Status</div>
+
+                  <div class="fgrp">
+                    <label class="flbl">Temperature Status</label>
+                    <select class="fsel" onchange="colorSel(this)">
+                      <option value="">Select</option>
+                      <option>Normal</option>
+                      <option>High</option>
+                      <option>Low</option>
+                    </select>
+                  </div>
+
+                  <div class="fgrp">
+                    <label class="flbl">Oxygen Status</label>
+                    <select class="fsel" onchange="colorSel(this)">
+                      <option value="">Select</option>
+                      <option>Normal</option>
+                      <option>Low</option>
+                      <option>Critical</option>
+                    </select>
+                  </div>
+
+                  <div class="fgrp">
+                    <label class="flbl">Heart Rate Status</label>
+                    <select class="fsel" onchange="colorSel(this)">
+                      <option value="">Select</option>
+                      <option>Normal</option>
+                      <option>Tachycardia</option>
+                      <option>Bradycardia</option>
+                    </select>
+                  </div>
+
+                  <div class="fgrp">
+                    <label class="flbl">Respiration Status</label>
+                    <select class="fsel" onchange="colorSel(this)">
+                      <option value="">Select</option>
+                      <option>Normal</option>
+                      <option>Rapid</option>
+                      <option>Slow</option>
+                    </select>
+                  </div>
+
+                  <div class="fgrp">
+                    <label class="flbl">Weight Status</label>
+                    <select class="fsel" onchange="colorSel(this)">
+                      <option value="">Select</option>
+                      <option>Normal</option>
+                      <option>Underweight</option>
+                      <option>Overweight</option>
+                    </select>
+                  </div>
+
+                  <div class="sec-div">Assessment</div>
+
+                  <div class="fgrp fg-full">
+                    <label class="flbl">Overall Assessment</label>
+                    <textarea class="ftxt" placeholder="General assessment..."></textarea>
+                  </div>
+
+                  <div class="fgrp fg-full">
+                    <label class="flbl">Diagnosis</label>
+                    <textarea class="ftxt" placeholder="Diagnosis details..."></textarea>
+                  </div>
+
+                  <div class="fgrp fg-full">
+                    <label class="flbl">Actions Taken</label>
+                    <textarea class="ftxt" placeholder="Procedures and interventions..."></textarea>
+                  </div>
+
+                  <div class="fgrp fg-full">
+                    <label class="flbl">Recommendations</label>
+                    <textarea class="ftxt" placeholder="Follow-up recommendations..."></textarea>
+                  </div>
+                </div>
+
+                <div class="btn-row">
+                  <button type="button" class="btn-sec" onclick="this.closest('form').reset()">
+                    <i class="fa-solid fa-rotate-left"></i>Clear
+                  </button>
+
+                  <button type="submit" class="btn-primary">
+                    <i class="fa-solid fa-floppy-disk"></i>Save Report
+                  </button>
+                </div>
+
+                <div class="msg-ok" id="msg1">
+                  <i class="fa-solid fa-circle-check"></i>Report saved successfully!
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+
+
+        <!----------------------------------------------------section3: VIEW Hourly Reports -------------------------------->
+        <!-- VIEW -->
+
+        <section id="HourlyReports" class="page">
+
+          <div class="page-header">
+            <div class="text-header">
+              <h1 class="page-title">Hourly Reports</h1>
+              <p class="page-sub ps-2">
+                Track hourly health updates and monitoring data
+              </p>
+            </div>
+          </div>
+
+          <div class="table-card">
+
+            <div class="table-header">
+
+              <div class="table-title">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                Hourly Reports
+              </div>
+
+              <div class="table-header-bottom d-flex gap-3 align-items-center">
+
+                <div class="search-wrap">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input class="search-inp" id="hrSearchInp" type="text" placeholder="Search hourly reports..." />
+                </div>
+
+                <select class="filter-select" id="hrFilter">
+                  <option value="all">All Reports</option>
+                  <option value="normal">Normal</option>
+                  <option value="warning">Warning</option>
+                  <option value="critical">Critical</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="table-scroll">
+              <table class="hourly-table">
+                <thead>
+                  <tr>
+                    <th>Report ID</th>
+                    <th>Child Name</th>
+                    <th>Nurse Name</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody id="hourlyReportsTable"></tbody>
+              </table>
+            </div>
+
+            <div class="pagination mt-3">
+
+              <div class="pg-info my-3" id="hrPgInfo"></div>
+
+              <div class="pg-btns">
+
+                <button class="pg-btn" id="hrPgFirst" title="First">
+                  <i class="fa-solid fa-angles-left"></i>
+                </button>
+
+                <button class="pg-btn" id="hrPgPrev" title="Previous">
+                  <i class="fa-solid fa-angle-left"></i>
+                </button>
+
+                <div id="hrPages" class="pages"></div>
+
+                <button class="pg-btn" id="hrPgNext" title="Next">
+                  <i class="fa-solid fa-angle-right"></i>
+                </button>
+
+                <button class="pg-btn" id="hrPgLast" title="Last">
+                  <i class="fa-solid fa-angles-right"></i>
+                </button>
+
+              </div>
+
+            </div>
+
+            <div class="mob-cards" id="hourlyReportsMobCards"></div>
+
+          </div>
+
+          <button type="button" id="hrArchiveBtn" class="archiveBtn">
+            <i class="fa-solid fa-box-archive"></i>
+            Archive
+          </button>
+
+        </section>
+
+
+        <!----------------------------------------------------section4:Create Hourly Reports -------------------------------->
+        <!-- CREATE -->
+        <section id="CreateHourlyReports" class="page">section4:Create Hourly Reports</section>
+
+        <!----------------------------------------------------section5:VIEW Child Data -------------------------------->
+        <!-- VIEW -->
+
+        <section id="ChildData" class="page">
+
+          <div class="page-header">
+            <div class="text-header">
+              <h1 class="page-title">Child Data</h1>
+              <p class="page-sub ps-2">
+                View child profiles and personal information
+              </p>
+            </div>
+          </div>
+
+          <div class="table-card">
+
+            <div class="table-header">
+
+              <div class="table-title">
+                <i class="fa-solid fa-baby"></i>
+                Child Data
+              </div>
+
+              <div class="table-header-bottom d-flex gap-3 align-items-center">
+
+                <div class="search-wrap">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input class="search-inp" id="childSearchInp" type="text" placeholder="Search child data..." />
+                </div>
+
+                <select class="filter-select" id="childGenderFilter">
+                  <option value="all">All Genders</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+
+              </div>
+
+            </div>
+
+            <div class="table-scroll">
+              <table class="child-table">
+                <thead>
+                  <tr>
+                    <th>Child ID</th>
+                    <th>Child Name</th>
+                    <th>Incubator ID</th>
+                    <th>Birth Week</th>
+                    <th>Gender</th>
+                    <th>Blood Type</th>
+                    <th>Birth Weight</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody id="child-table"></tbody>
+              </table>
+            </div>
+
+
+            <div class="pagination mt-3">
+
+              <div class="pg-info my-3" id="childPgInfo"></div>
+
+              <div class="pg-btns">
+
+                <button class="pg-btn" id="childPgFirst" title="First">
+                  <i class="fa-solid fa-angles-left"></i>
+                </button>
+
+                <button class="pg-btn" id="childPgPrev" title="Previous">
+                  <i class="fa-solid fa-angle-left"></i>
+                </button>
+
+                <div id="childPages" class="pages"></div>
+
+                <button class="pg-btn" id="childPgNext" title="Next">
+                  <i class="fa-solid fa-angle-right"></i>
+                </button>
+
+                <button class="pg-btn" id="childPgLast" title="Last">
+                  <i class="fa-solid fa-angles-right"></i>
+                </button>
+
+              </div>
+
+            </div>
+
+            <div class="mob-cards" id="childMobCards"></div>
+
+          </div>
+
+          <button type="button" id="childArchiveBtn" class="archiveBtn">
+            <i class="fa-solid fa-box-archive"></i>
+            Archive
+          </button>
+
+        </section>
+
+        <!----------------------------------------------------section6:CreateChild Data -------------------------------->
+        <!-- CREATE -->
+        <section id="CreateChildData" class="page">section6:CreateChild Data</section>
+        <!----------------------------------------------------section7:Archive-------------------------------->
+
+        <section id="Archive" class="page">
+
+          <div class="page-header">
+            <div class="text-header">
+              <h1 class="page-title">Archive</h1>
+              <p class="page-sub">Access archived medical reports and records</p>
+            </div>
+          </div>
+
+          <div class="table-card">
+
+            <div class="table-header">
+              <div class="table-title">
+                <i class="fa-solid fa-box-archive"></i>
+                <span id="archiveTitle">Archived Reports</span>
+              </div>
+            </div>
+
+            <div class="table-scroll">
+              <table id="archiveMainTable">
+                <thead id="archiveHead"></thead>
+                <tbody id="archiveTable"></tbody>
+              </table>
+            </div>
+
+            <div class="pagination mt-3">
+              <div class="pg-info my-3" id="archivePgInfo"></div>
+
+              <div class="pg-btns">
+                <button class="pg-btn" id="archivePgFirst">
+                  <i class="fa-solid fa-angles-left"></i>
+                </button>
+
+                <button class="pg-btn" id="archivePgPrev">
+                  <i class="fa-solid fa-angle-left"></i>
+                </button>
+
+                <div id="archivePages" class="pages"></div>
+
+                <button class="pg-btn" id="archivePgNext">
+                  <i class="fa-solid fa-angle-right"></i>
+                </button>
+
+                <button class="pg-btn" id="archivePgLast">
+                  <i class="fa-solid fa-angles-right"></i>
+                </button>
+              </div>
+            </div>
+            <div class="mob-cards" id="archiveMobCards"></div>
+
+          </div>
+
+        </section>
+        <!----------------------------------------------------section5: Messages -------------------------------->
+
+        <section id="Messages" class="page">
+
+          <div class="page-header">
+            <div class="text-header">
+              <h1 class="page-title">Messages</h1>
+              <p class="page-sub ps-2">View and manage your inbox and sent messages</p>
+            </div>
+          </div>
+
+          <!-- ── Chat Layout ── -->
+          <div class="msg-layout">
+
+            <!-- LEFT: Conversations list -->
+            <div class="msg-sidebar">
+
+              <div class="msg-sb-head">
+                <div class="table-title" style="font-size:13px;">
+                  <i class="fa-solid fa-inbox"></i> Inbox
+                </div>
+                <div class="msg-search-wrap">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input class="msg-search-inp" id="msgSearchInp" type="text" placeholder="Search..." />
+                </div>
+                <div style="display:flex; gap:6px; margin-top:10px; flex-wrap:wrap;">
+                  <button class="msg-filter-btn active" data-filter="all">All</button>
+                  <button class="msg-filter-btn" data-filter="unread">Unread</button>
+                  <button class="msg-filter-btn" data-filter="sent">Sent</button>
+                </div>
+              </div>
+
+              <div class="msg-conv-list" id="msgConvList">
+                <!-- rendered by JS -->
+              </div>
+
+            </div>
+
+            <!-- RIGHT: Message thread -->
+            <div class="msg-thread-area">
+
+              <!-- Empty state -->
+              <div class="msg-empty" id="msgEmpty">
+                <i class="fa-solid fa-comments"></i>
+                <p>Select a conversation to view messages</p>
+              </div>
+
+              <!-- Thread -->
+              <div class="msg-thread" id="msgThread" style="display:none;">
+
+                <div class="msg-thread-head" id="msgThreadHead">
+                  <!-- name + status filled by JS -->
+                </div>
+
+                <div class="msg-bubbles" id="msgBubbles">
+                  <!-- bubbles rendered by JS -->
+                </div>
+
+                <!-- Compose -->
+                <div class="msg-compose">
+                  <textarea class="msg-compose-inp" id="msgComposeInp" placeholder="Type your message..."
+                    rows="1"></textarea>
+                  <button class="msg-send-btn" id="msgSendBtn" title="Send">
+                    <i class="fa-solid fa-paper-plane"></i>
+                  </button>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+        <!----------------------------------------------------section5: -------------------------------->
+
+        <!----------------------------------------------------section5: -------------------------------->
+
+        <!----------------------------------------------------section5: -------------------------------->
 
 
 
@@ -581,36 +754,37 @@ Archive
 
 
 
-<div class="modal fade" id="reportDetailsModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
+    <div class="modal fade" id="reportDetailsModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
 
-      <div class="modal-header">
-        <h5 class="modal-title">Full Report Details</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          <div class="modal-header">
+            <h5 class="modal-title">Full Report Details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body" id="reportDetailsBody"></div>
+
+        </div>
       </div>
-
-      <div class="modal-body" id="reportDetailsBody"></div>
-
     </div>
-  </div>
-</div>
 
- 
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-<script src="./assets/js/main.js"></script>
-<script src="./assets/js/openReportPDF.js"></script>
-<script src="assets/js/pdfHourlyReport.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/openReportPDF.js"></script>
+    <script src="assets/js/pdfHourlyReport.js"></script>
     <script src="./assets/js/hourlyReports.js"></script>
     <script src="./assets/js/archive.js"></script>
     <script src="./assets/js/childData.js"></script>
-     <script src="./assets/js/openChildPDF.js"></script>
-    <script src="./assets/js/doctor.js"></script>
+    <script src="./assets/js/openChildPDF.js"></script>
+    <script src="./assets/js/nurse.js"></script>
+
   </body>
 
 </html>

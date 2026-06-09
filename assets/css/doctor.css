@@ -1404,9 +1404,15 @@ tr:hover td{
   grid-template-columns:1fr;
   
 }
-
 .archiveBtn{
-  padding: 20;
+  margin-left: 16px;
+  margin-bottom: 16px;
+}
+.mob-name,
+.mob-email {
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 }
 
