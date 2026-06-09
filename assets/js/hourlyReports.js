@@ -373,7 +373,10 @@ function renderHourlyReportsMobileCards(reports) {
           onclick="showHourlyReportDetails('${report.hourly_report_id}')">
           <i class="fa-solid fa-eye"></i>
         </button>
-
+ <button class="act-btn pdf"
+    onclick="openHourlyPDF('${report.hourly_report_id}')">
+    <i class="fa-solid fa-file-pdf"></i>
+  </button>
         <button class="act-btn archive"
           onclick="archiveHourlyReport('${report.hourly_report_id}')">
           <i class="fa-solid fa-box-archive"></i>

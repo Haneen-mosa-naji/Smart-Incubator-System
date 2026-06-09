@@ -17,9 +17,29 @@ function renderArchive() {
   const info = document.getElementById("archivePgInfo");
   const pages = document.getElementById("archivePages");
   const table = document.getElementById("archiveMainTable");
+    const mobCards =document.getElementById("archiveMobCards");
+      if (mobCards) {
+    mobCards.innerHTML = "";
+  }
 
 
   if (!thead || !tbody) return;
+
+  if (table) {
+    table.classList.remove("full-table", "hourly-table", "child-table");
+
+    if (currentArchiveType === "full") {
+      table.classList.add("full-table");
+    }
+
+    if (currentArchiveType === "hourly") {
+      table.classList.add("hourly-table");
+    }
+
+    if (currentArchiveType === "child") {
+      table.classList.add("child-table");
+    }
+  }
 
   const items = archivedItems.filter(
     item => item.archive_type === currentArchiveType
@@ -44,40 +64,23 @@ function renderArchive() {
       <tr>
         <th>Report ID</th>
         <th>Child Name</th>
-        <th>Child ID</th>
         <th>Nurse Name</th>
-        <th>Nurse ID</th>
+        <th>Report Type</th>
         <th>Date</th>
         <th>Time</th>
         <th>Actions</th>
       </tr>
     `;
-
+             
     pageItems.forEach(item => {
       const r = item.data;
 
-if (table) {
-  table.classList.remove("full-table", "hourly-table", "child-table");
-
-  if (currentArchiveType === "full") {
-    table.classList.add("full-table");
-  }
-
-  if (currentArchiveType === "hourly") {
-    table.classList.add("hourly-table");
-  }
-
-  if (currentArchiveType === "child") {
-    table.classList.add("child-table");
-  }
-}
       tbody.innerHTML += `
         <tr>
           <td>${r.report_id}</td>
           <td>${r.child_name}</td>
-          <td>${r.child_id}</td>
           <td>${r.nurse_name}</td>
-          <td>${r.nurse_id}</td>
+          <td>${r.report_type}</td>
           <td>${r.report_date}</td>
           <td>${r.report_time}</td>
           <td class="actions-cell">
@@ -100,16 +103,14 @@ if (table) {
       <tr>
         <th>Report ID</th>
         <th>Child Name</th>
-        <th>Child ID</th>
         <th>Nurse Name</th>
-        <th>Nurse ID</th>
         <th>Status</th>
         <th>Date</th>
         <th>Time</th>
         <th>Actions</th>
       </tr>
     `;
-
+ 
     pageItems.forEach(item => {
       const r = item.data;
 
@@ -117,14 +118,12 @@ if (table) {
         <tr>
           <td>${r.hourly_report_id}</td>
           <td>${r.child_name}</td>
-          <td>${r.child_id}</td>
           <td>${r.nurse_name}</td>
-          <td>${r.nurse_id}</td>
-          <td><span class="vital-badge ${r.status}">${r.status}</span></td>
-          <td>${r.date}</td>
-          <td>${r.time}</td>
+          <td><span class="vital-badge ${r.status || "normal"}">${r.status || "Archived"}</span></td>
+          <td>${r.report_date || r.date}</td>
+          <td>${r.report_time || r.time}</td>
           <td class="actions-cell">
-            <button class="act-btn view" onclick="showHourlyReportDetails('${r.hourly_report_id}')">
+            <button class="act-btn view" onclick="showHourlyDetails('${r.hourly_report_id}')">
               <i class="fa-solid fa-eye"></i>
             </button>
             <button class="act-btn pdf" onclick="openHourlyPDF('${r.hourly_report_id}')">
@@ -135,6 +134,7 @@ if (table) {
       `;
     });
   }
+
   if (currentArchiveType === "child") {
     title.textContent = "Archived Child Data";
 
@@ -163,12 +163,10 @@ if (table) {
           <td>${c.gender}</td>
           <td>${c.blood_type}</td>
           <td>${c.birth_weight} g</td>
-
           <td class="actions-cell">
             <button class="act-btn view" onclick="showChildDetails('${c.child_id}')">
               <i class="fa-solid fa-eye"></i>
             </button>
-
             <button class="act-btn pdf" onclick="openChildPDF('${c.child_id}')">
               <i class="fa-solid fa-file-pdf"></i>
             </button>
@@ -177,6 +175,7 @@ if (table) {
       `;
     });
   }
+renderArchiveMobileCards(pageItems);
   if (info) {
     info.textContent =
       `Showing ${pageItems.length} of ${items.length} archived records`;
@@ -187,8 +186,6 @@ if (table) {
       `${archiveCurrentPage} / ${totalPages}`;
   }
 }
-
-
 // ================= ARCHIVE ACTIONS =================
 
 function archiveReport(reportId) {
@@ -288,3 +285,103 @@ document.getElementById("archivePgLast")?.addEventListener("click", () => {
 document.getElementById("childArchiveBtn")?.addEventListener("click", () => {
   openArchive("child");
 });
+
+
+function renderArchiveMobileCards(items) {
+  const el = document.getElementById("archiveMobCards");
+  if (!el) return;
+
+  if (currentArchiveType === "full") {
+    el.innerHTML = items.map(item => {
+      const r = item.data;
+
+      return `
+        <div class="mob-card">
+          <div class="mob-info">
+            <div class="mob-name">Report ID : ${r.report_id}</div>
+            <div class="mob-email">Child : ${r.child_name}</div>
+            <div class="mob-email">Nurse : ${r.nurse_name}</div>
+            <div class="mob-email">Type : ${r.report_type}</div>
+            <div class="mob-email">Date : ${r.report_date}</div>
+            <div class="mob-email">Time : ${r.report_time}</div>
+          </div>
+
+          <div class="action-btns">
+            <button class="act-btn view"
+              onclick="showArchiveFullDetails('${r.report_id}')">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+
+            <button class="act-btn pdf"
+              onclick="openReportPDF('${r.report_id}')">
+              <i class="fa-solid fa-file-pdf"></i>
+            </button>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  if (currentArchiveType === "hourly") {
+    el.innerHTML = items.map(item => {
+      const r = item.data;
+
+      return `
+        <div class="mob-card">
+          <div class="mob-info">
+            <div class="mob-name">Report ID : ${r.hourly_report_id}</div>
+            <div class="mob-email">Child : ${r.child_name}</div>
+            <div class="mob-email">Nurse : ${r.nurse_name}</div>
+            <div class="mob-email">Status : ${r.status}</div>
+            <div class="mob-email">Date : ${r.date}</div>
+            <div class="mob-email">Time : ${r.time}</div>
+          </div>
+
+          <div class="action-btns">
+            <button class="act-btn view"
+              onclick="showHourlyReportDetails('${r.hourly_report_id}')">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+
+            <button class="act-btn pdf"
+              onclick="openHourlyPDF('${r.hourly_report_id}')">
+              <i class="fa-solid fa-file-pdf"></i>
+            </button>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  if (currentArchiveType === "child") {
+    el.innerHTML = items.map(item => {
+      const c = item.data;
+
+      return `
+        <div class="mob-card">
+          <div class="mob-info">
+            <div class="mob-name">Child ID : ${c.child_id}</div>
+            <div class="mob-email">Child : ${c.child_name}</div>
+            <div class="mob-email">Incubator : ${c.incubator_id}</div>
+            <div class="mob-email">Birth Week : ${c.birth_week}</div>
+            <div class="mob-email">Gender : ${c.gender}</div>
+            <div class="mob-email">Blood Type : ${c.blood_type}</div>
+            <div class="mob-email">Birth Weight : ${c.birth_weight} g</div>
+          </div>
+
+          <div class="action-btns">
+            <button class="act-btn view"
+              onclick="showChildDetails('${c.child_id}')">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+
+            <button class="act-btn pdf"
+              onclick="openChildPDF('${c.child_id}')">
+              <i class="fa-solid fa-file-pdf"></i>
+            </button>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+}

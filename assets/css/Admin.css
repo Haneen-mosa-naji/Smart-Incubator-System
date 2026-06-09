@@ -1199,6 +1199,10 @@ tr:hover td{
 .page-title{
        margin-top:20px;
 }
+  .report-details-grid{
+  grid-template-columns:1fr;
+  
+}
 }
 
 
