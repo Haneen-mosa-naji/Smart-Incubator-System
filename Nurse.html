@@ -90,7 +90,7 @@
             <li>
               <a href="#FullReports">
                 <i class="fa-solid fa-file-medical"></i>
-                <span class="link-text">View Full Reports</span>
+                <span class="link-text">View Medical Reports</span>
               </a>
             </li>
             <li>
@@ -112,19 +112,19 @@
             <li>
               <a href="#CreateFullReports">
                 <i class="fa-solid fa-file-circle-plus"></i>
-                <span class="link-text">Create Full Reports</span>
+                <span class="link-text">Create Medical Reports</span>
               </a>
             </li>
             <li>
               <a href="#CreateHourlyReports">
                 <i class="fa-solid fa-calendar-plus"></i>
-                <span class="link-text">Create Reports</span>
+                <span class="link-text">Create Hourly Reports</span>
               </a>
             </li>
             <li>
               <a href="#CreateChildData">
                 <i class="fa-solid fa-user-plus"></i>
-                <span class="link-text">Create Data</span>
+                <span class="link-text">Create Child Data</span>
               </a>
             </li>
 
@@ -164,7 +164,7 @@
         <section id="FullReports" class="page">
           <div class="page-header ">
             <div class="text-header">
-              <h1 class="page-title">Full Medical Reports</h1>
+              <h1 class="page-title">Medical Reports</h1>
               <p class="page-sub ps-2">
                 Monitor and review detailed health reports and medical history
               </p>
@@ -261,148 +261,150 @@
 
         <!----------------------------------------------------section2:Create Full Reports -------------------------------->
         <!-- CREATE -->
-        <section id="CreateFullReports" class="page">
-          <div class="card">
-            <div class="card-head">
-              <div class="card-title"><i class="fa-solid fa-file-pen"></i>New Medical Report</div>
-            </div>
-            <div class="card-body">
-              <form id="repForm">
-                <div class="fg fg-2">
-                  <div class="sec-div">Report Info</div>
-                  <div class="fgrp">
-                    <label class="flbl">Child ID <span>*</span></label>
-                    <input class="finp" type="text" placeholder="e.g. C-001" required>
-                  </div>
+       <section id="CreateFullReports" class="page">
+        
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title"><i class="fa-solid fa-file-pen"></i>New Medical Report</div>
+    </div>
+    <div class="card-body">
+      <form id="repForm">
+        <div class="fg fg-2 reportInfo">
+          <div class="sec-div">Report Info</div>
 
-                  <div class="fgrp">
-                    <label class="flbl">User ID (Doctor/Nurse) <span>*</span></label>
-                    <input class="finp" type="text" placeholder="e.g. U-012">
-                  </div>
-
-                  <div class="fgrp">
-                    <label class="flbl">Report Type <span>*</span></label>
-                    <select class="fsel">
-                      <option value="">Select type</option>
-                      <option>Daily</option>
-                      <option>Weekly</option>
-                      <option>Emergency</option>
-                      <option>Discharge</option>
-                    </select>
-                  </div>
-
-                  <div class="fgrp">
-                    <label class="flbl">Report Interval</label>
-                    <input class="finp" type="text" placeholder="e.g. 6h / 12h / 24h">
-                  </div>
-
-                  <div class="fgrp">
-                    <label class="flbl">Report Date <span>*</span></label>
-                    <input type="date" lang="en" dir="ltr" class="finp">
-                  </div>
-
-                  <div class="fgrp">
-                    <label class="flbl">Report Time <span>*</span></label>
-                    <input class="finp" type="time">
-                  </div>
-
-                  <div class="fgrp">
-                    <label class="flbl">Next Check Time</label>
-                    <input class="finp" type="datetime-local">
-                  </div>
-
-                  <div class="sec-div">Vital Status</div>
-
-                  <div class="fgrp">
-                    <label class="flbl">Temperature Status</label>
-                    <select class="fsel" onchange="colorSel(this)">
-                      <option value="">Select</option>
-                      <option>Normal</option>
-                      <option>High</option>
-                      <option>Low</option>
-                    </select>
-                  </div>
-
-                  <div class="fgrp">
-                    <label class="flbl">Oxygen Status</label>
-                    <select class="fsel" onchange="colorSel(this)">
-                      <option value="">Select</option>
-                      <option>Normal</option>
-                      <option>Low</option>
-                      <option>Critical</option>
-                    </select>
-                  </div>
-
-                  <div class="fgrp">
-                    <label class="flbl">Heart Rate Status</label>
-                    <select class="fsel" onchange="colorSel(this)">
-                      <option value="">Select</option>
-                      <option>Normal</option>
-                      <option>Tachycardia</option>
-                      <option>Bradycardia</option>
-                    </select>
-                  </div>
-
-                  <div class="fgrp">
-                    <label class="flbl">Respiration Status</label>
-                    <select class="fsel" onchange="colorSel(this)">
-                      <option value="">Select</option>
-                      <option>Normal</option>
-                      <option>Rapid</option>
-                      <option>Slow</option>
-                    </select>
-                  </div>
-
-                  <div class="fgrp">
-                    <label class="flbl">Weight Status</label>
-                    <select class="fsel" onchange="colorSel(this)">
-                      <option value="">Select</option>
-                      <option>Normal</option>
-                      <option>Underweight</option>
-                      <option>Overweight</option>
-                    </select>
-                  </div>
-
-                  <div class="sec-div">Assessment</div>
-
-                  <div class="fgrp fg-full">
-                    <label class="flbl">Overall Assessment</label>
-                    <textarea class="ftxt" placeholder="General assessment..."></textarea>
-                  </div>
-
-                  <div class="fgrp fg-full">
-                    <label class="flbl">Diagnosis</label>
-                    <textarea class="ftxt" placeholder="Diagnosis details..."></textarea>
-                  </div>
-
-                  <div class="fgrp fg-full">
-                    <label class="flbl">Actions Taken</label>
-                    <textarea class="ftxt" placeholder="Procedures and interventions..."></textarea>
-                  </div>
-
-                  <div class="fgrp fg-full">
-                    <label class="flbl">Recommendations</label>
-                    <textarea class="ftxt" placeholder="Follow-up recommendations..."></textarea>
-                  </div>
-                </div>
-
-                <div class="btn-row">
-                  <button type="button" class="btn-sec" onclick="this.closest('form').reset()">
-                    <i class="fa-solid fa-rotate-left"></i>Clear
-                  </button>
-
-                  <button type="submit" class="btn-primary">
-                    <i class="fa-solid fa-floppy-disk"></i>Save Report
-                  </button>
-                </div>
-
-                <div class="msg-ok" id="msg1">
-                  <i class="fa-solid fa-circle-check"></i>Report saved successfully!
-                </div>
-              </form>
-            </div>
+          <div class="fgrp">
+            <label class="flbl" for="fullChildId">Child ID <span>*</span></label>
+            <input id="fullChildId" class="finp" type="text" required>
           </div>
-        </section>
+
+          <div class="fgrp">
+            <label class="flbl" for="fullUserId">User ID (Doctor/Nurse) <span>*</span></label>
+            <input id="fullUserId" class="finp" type="text">
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="fullReportType">Report Type <span>*</span></label>
+            <select id="fullReportType" class="fsel">
+              <option value="">Select type</option>
+              <option>Daily</option>
+              <option>Weekly</option>
+              <option>Emergency</option>
+              <option>Discharge</option>
+            </select>
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="fullReportInterval">Report Interval</label>
+            <input id="fullReportInterval" class="finp" type="text">
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="fullReportDate">Report Date <span>*</span></label>
+            <input id="fullReportDate" type="date" lang="en" dir="ltr" class="finp">
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="fullReportTime">Report Time <span>*</span></label>
+            <input id="fullReportTime" class="finp" type="time">
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="fullNextCheckTime">Next Check Time</label>
+            <input id="fullNextCheckTime" class="finp" type="datetime-local">
+          </div>
+
+          <div class="sec-div">Vital Status</div>
+
+          <div class="fgrp">
+            <label class="flbl" for="temperatureStatus">Temperature Status</label>
+            <select id="temperatureStatus" class="fsel" onchange="colorSel(this)">
+              <option value="">Select</option>
+              <option>Normal</option>
+              <option>High</option>
+              <option>Low</option>
+            </select>
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="oxygenStatus">Oxygen Status</label>
+            <select id="oxygenStatus" class="fsel" onchange="colorSel(this)">
+              <option value="">Select</option>
+              <option>Normal</option>
+              <option>Low</option>
+              <option>Critical</option>
+            </select>
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="heartRateStatus">Heart Rate Status</label>
+            <select id="heartRateStatus" class="fsel" onchange="colorSel(this)">
+              <option value="">Select</option>
+              <option>Normal</option>
+              <option>Tachycardia</option>
+              <option>Bradycardia</option>
+            </select>
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="respirationStatus">Respiration Status</label>
+            <select id="respirationStatus" class="fsel" onchange="colorSel(this)">
+              <option value="">Select</option>
+              <option>Normal</option>
+              <option>Rapid</option>
+              <option>Slow</option>
+            </select>
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="weightStatus">Weight Status</label>
+            <select id="weightStatus" class="fsel" onchange="colorSel(this)">
+              <option value="">Select</option>
+              <option>Normal</option>
+              <option>Underweight</option>
+              <option>Overweight</option>
+            </select>
+          </div>
+
+          <div class="sec-div">Assessment</div>
+
+          <div class="fgrp fg-full">
+            <label class="flbl" for="fullOverallAssessment">Overall Assessment</label>
+            <textarea id="fullOverallAssessment" class="ftxt"></textarea>
+          </div>
+
+          <div class="fgrp fg-full">
+            <label class="flbl" for="fullDiagnosis">Diagnosis</label>
+            <textarea id="fullDiagnosis" class="ftxt"></textarea>
+          </div>
+
+          <div class="fgrp fg-full">
+            <label class="flbl" for="fullActionsTaken">Actions Taken</label>
+            <textarea id="fullActionsTaken" class="ftxt"></textarea>
+          </div>
+
+          <div class="fgrp fg-full">
+            <label class="flbl" for="fullRecommendations">Recommendations</label>
+            <textarea id="fullRecommendations" class="ftxt"></textarea>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn-sec" onclick="this.closest('form').reset()">
+            <i class="fa-solid fa-rotate-left"></i>Clear
+          </button>
+
+          <button type="submit" class="btn-primary">
+            <i class="fa-solid fa-floppy-disk"></i>Save Report
+          </button>
+        </div>
+
+        <div class="msg-ok" id="msg1">
+          <i class="fa-solid fa-circle-check"></i>Report saved successfully!
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
 
 
 
@@ -505,7 +507,128 @@
 
         <!----------------------------------------------------section4:Create Hourly Reports -------------------------------->
         <!-- CREATE -->
-        <section id="CreateHourlyReports" class="page">section4:Create Hourly Reports</section>
+<section id="CreateHourlyReports" class="page">
+  <div class="card">
+
+    <div class="card-head">
+      <div class="card-title">
+        <i class="fa-solid fa-clock"></i>
+        New Hourly Report
+      </div>
+    </div>
+
+    <div class="card-body">
+
+      <form id="hrForm">
+
+        <div class="fg fg-3">
+
+          <div class="sec-div">IDs</div>
+
+          <div class="fgrp">
+            <label class="flbl" for="childId">Child ID <span>*</span></label>
+            <input id="childId" class="finp" type="text" required>
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="incubatorId">Incubator ID <span>*</span></label>
+            <input id="incubatorId" class="finp" type="text">
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="userId">User ID <span>*</span></label>
+            <input id="userId" class="finp" type="text">
+          </div>
+
+          <div class="sec-div">Measurements</div>
+
+          <div class="fgrp">
+            <label class="flbl" for="temperature">Temperature (°C) <span>*</span></label>
+            <input id="temperature" class="finp" type="number" step="0.1">
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="incubatorTemp">Incubator Temp (°C)</label>
+            <input id="incubatorTemp" class="finp" type="number" step="0.1">
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="humidity">Humidity (%)</label>
+            <input id="humidity" class="finp" type="number">
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="oxygenLevel">Oxygen Level (%)</label>
+            <input id="oxygenLevel" class="finp" type="number" step="0.1">
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="heartRate">Heart Rate (bpm)</label>
+            <input id="heartRate" class="finp" type="number">
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="weight">Weight (g)</label>
+            <input id="weight" class="finp" type="number" placeholder="2400">
+          </div>
+
+          <div class="sec-div">Notes</div>
+
+          <div class="fgrp">
+            <label class="flbl" for="reportDate">Date <span>*</span></label>
+            <input id="reportDate" class="finp" type="date">
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="reportTime">Time <span>*</span></label>
+            <input id="reportTime" class="finp" type="time">
+          </div>
+
+          <div class="fgrp"></div>
+
+          <div class="fgrp fg-full">
+            <label class="flbl" for="overallAssessment">Overall Assessment</label>
+            <textarea id="overallAssessment" class="ftxt"></textarea>
+          </div>
+
+          <div class="fgrp fg-full">
+            <label class="flbl" for="actionsTaken">Actions Taken</label>
+            <textarea id="actionsTaken" class="ftxt"></textarea>
+          </div>
+
+          <div class="fgrp fg-full">
+            <label class="flbl" for="recommendations">Recommendations</label>
+            <textarea id="recommendations" class="ftxt"></textarea>
+          </div>
+
+        </div>
+
+        <div class="btn-row">
+
+          <button type="button" class="btn-sec"
+            onclick="this.closest('form').reset()">
+            <i class="fa-solid fa-rotate-left"></i>
+            Clear
+          </button>
+
+          <button type="submit" class="btn-primary">
+            <i class="fa-solid fa-floppy-disk"></i>
+            Save Report
+          </button>
+
+        </div>
+
+        <div class="msg-ok" id="msg2">
+          <i class="fa-solid fa-circle-check"></i>
+          Hourly report saved!
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+</section>
 
         <!----------------------------------------------------section5:VIEW Child Data -------------------------------->
         <!-- VIEW -->
@@ -608,7 +731,121 @@
 
         <!----------------------------------------------------section6:CreateChild Data -------------------------------->
         <!-- CREATE -->
-        <section id="CreateChildData" class="page">section6:CreateChild Data</section>
+ <section id="CreateChildData" class="page">
+  <div id="t-create3" class="tab-pane active">
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">
+          <i class="fa-solid fa-baby"></i>
+          Register New Child
+        </div>
+      </div>
+
+      <div class="card-body">
+        <form id="childForm">
+
+          <div class="fg fg-2">
+
+            <div class="sec-div">Personal Info</div>
+
+            <div class="fgrp fg-full">
+              <label class="flbl" for="childFullName">Child Full Name <span>*</span></label>
+              <input id="childFullName" class="finp" type="text"  required>
+            </div>
+
+            <div class="fgrp">
+              <label class="flbl" for="fatherName">Father's Name <span>*</span></label>
+              <input id="fatherName" class="finp" type="text" >
+            </div>
+
+            <div class="fgrp">
+              <label class="flbl" for="motherName">Mother's Name <span>*</span></label>
+              <input id="motherName" class="finp" type="text" >
+            </div>
+
+            <div class="fgrp">
+              <label class="flbl" for="birthDate">Birth Date <span>*</span></label>
+              <input id="birthDate" class="finp" type="date">
+            </div>
+
+            <div class="fgrp">
+              <label class="flbl" for="gestationalWeek">Gestational Week</label>
+              <input id="gestationalWeek" class="finp" type="number" min="22" max="42" >
+            </div>
+
+            <div class="fgrp">
+              <label class="flbl" for="gender">Gender <span>*</span></label>
+              <select id="gender" class="fsel">
+                <option value="">Select gender</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+
+            <div class="fgrp">
+              <label class="flbl" for="bloodType">Blood Type</label>
+              <select id="bloodType" class="fsel">
+                <option value="">Select</option>
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+                <option>O+</option>
+                <option>O-</option>
+              </select>
+            </div>
+
+            <div class="fgrp">
+              <label class="flbl" for="birthWeight">Birth Weight (g) <span>*</span></label>
+              <input id="birthWeight" class="finp" type="number" >
+            </div>
+
+            <div class="fgrp fg-full">
+              <label class="flbl" for="medicalCondition">Medical Condition</label>
+              <textarea id="medicalCondition" class="ftxt" ></textarea>
+            </div>
+
+            <div class="sec-div">Admission Info</div>
+
+            <div class="fgrp">
+              <label class="flbl" for="admissionDate">Admission Date <span>*</span></label>
+              <input id="admissionDate" class="finp" type="date">
+            </div>
+
+            <div class="fgrp">
+              <label class="flbl" for="incubatorId">Incubator ID <span>*</span></label>
+              <input id="incubatorId" class="finp" type="text" >
+            </div>
+
+            <div class="fgrp">
+              <label class="flbl" for="parentId">Parent (User) ID</label>
+              <input id="parentId" class="finp" type="text" >
+            </div>
+
+          </div>
+
+          <div class="btn-row">
+            <button type="button" class="btn-sec" onclick="this.closest('form').reset()">
+              <i class="fa-solid fa-rotate-left"></i>Clear
+            </button>
+
+            <button type="submit" class="btn-primary">
+              <i class="fa-solid fa-floppy-disk"></i>Register Child
+            </button>
+          </div>
+
+          <div class="msg-ok" id="msg3">
+            <i class="fa-solid fa-circle-check"></i>
+            Child registered successfully!
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
         <!----------------------------------------------------section7:Archive-------------------------------->
 
         <section id="Archive" class="page">

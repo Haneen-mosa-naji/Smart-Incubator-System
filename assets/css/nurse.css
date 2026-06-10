@@ -1414,6 +1414,18 @@ tr:hover td{
   overflow-wrap: break-word;
   word-break: break-word;
 }
+
+.reportInfo {
+  grid-template-columns: 1fr !important;
+margin: 10px;
+
+}
+.btn-row{
+    flex-direction: column;
+    gap:5px;
+
+ 
+}
 }
 
 @media (max-width:348px) {
