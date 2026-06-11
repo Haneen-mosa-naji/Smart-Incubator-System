@@ -107,6 +107,15 @@
             </li>
 
           </ul>
+          <P class="sidenav-label">Messages</P>
+          <ul>
+            <li>
+              <a href="#Messages">
+                <i class="fa-solid fa-comments"></i>
+                <span class="link-text">Messages</span>
+              </a>
+            </li>
+          </ul>
 
         </div>
 
@@ -561,6 +570,81 @@ Archive
   </div>
 
 </section>
+
+  <!----------------------------------------------------section5: Messages -------------------------------->
+
+        <section id="Messages" class="page">
+
+          <div class="page-header">
+            <div class="text-header">
+              <h1 class="page-title">Messages</h1>
+              <p class="page-sub ps-2">View and manage your inbox and sent messages</p>
+            </div>
+          </div>
+
+          <!-- ── Chat Layout ── -->
+          <div class="msg-layout">
+
+            <!-- LEFT: Conversations list -->
+            <div class="msg-sidebar">
+
+              <div class="msg-sb-head">
+                <div class="table-title" style="font-size:13px;">
+                  <i class="fa-solid fa-inbox"></i> Inbox
+                </div>
+                <div class="msg-search-wrap">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input class="msg-search-inp" id="msgSearchInp" type="text" placeholder="Search..." />
+                </div>
+                <div style="display:flex; gap:6px; margin-top:10px; flex-wrap:wrap;">
+                  <button class="msg-filter-btn active" data-filter="all">All</button>
+                  <button class="msg-filter-btn" data-filter="unread">Unread</button>
+                  <button class="msg-filter-btn" data-filter="sent">Sent</button>
+                </div>
+              </div>
+
+              <div class="msg-conv-list" id="msgConvList">
+                <!-- rendered by JS -->
+              </div>
+
+            </div>
+
+            <!-- RIGHT: Message thread -->
+            <div class="msg-thread-area">
+
+              <!-- Empty state -->
+              <div class="msg-empty" id="msgEmpty">
+                <i class="fa-solid fa-comments"></i>
+                <p>Select a conversation to view messages</p>
+              </div>
+
+              <!-- Thread -->
+              <div class="msg-thread" id="msgThread" style="display:none;">
+
+                <div class="msg-thread-head" id="msgThreadHead">
+                  <!-- name + status filled by JS -->
+                </div>
+
+                <div class="msg-bubbles" id="msgBubbles">
+                  <!-- bubbles rendered by JS -->
+                </div>
+
+                <!-- Compose -->
+                <div class="msg-compose">
+                  <textarea class="msg-compose-inp" id="msgComposeInp" placeholder="Type your message..."
+                    rows="1"></textarea>
+                  <button class="msg-send-btn" id="msgSendBtn" title="Send">
+                    <i class="fa-solid fa-paper-plane"></i>
+                  </button>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
   <!----------------------------------------------------section5: -------------------------------->
 
    <!----------------------------------------------------section5: -------------------------------->

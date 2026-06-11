@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Smart-Incubator-System-Engineer</title>
+  <title>Engineer-Smart-Incubator-System</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <link href="./assets/css/main.css" rel="stylesheet">
-  <link href="./assets/css/Admin.css" rel="stylesheet">
+  <link href="./assets/css/engineer.css" rel="stylesheet">
 
 </head>
 
@@ -54,12 +54,16 @@
   </div>
   <!--  end loader -->
 
-  <body>
 
 
    
     <div id="sbOverlay" class="sb-overlay"></div>
-
+<!-- Top Menu Bar (mobile only) -->
+<div class="bg-topbar-menu-btn">
+  <button class="topbar-menu-btn">
+    <i class="fa-solid fa-bars"></i> Smart Incubator
+  </button>
+</div>
     <div class="adminpage  ">
 
       <!-- SIDEBAR -->
@@ -69,7 +73,7 @@
           <img src="./assets/img/logonav.png" class="logo-nav ">
           <div class="sidenav-header-text d-flex flex-column">
             <span class="sidenav-header-name">Smart Incubator System</span>
-            <span class="sidenav-header-sub">Admin Panel</span>
+            <span class="sidenav-header-sub">Engineer Panel</span>
           </div>
         </div>
 
@@ -77,19 +81,27 @@
           <div class="sidenav-label">Management</div>
           <ul>
             <li>
-              <a href="#users">
+              <a href="#AllMaintenance">
                 <i class="fa-solid fa-users"></i>
-                <span class="link-text">All Users</span>
+                <span class="link-text">All Maintenance</span>
               </a>
             </li>
             <li>
-              <a href="#create">
+              <a href="#NewMaintenance">
                 <i class="fa-solid fa-user-plus"></i>
-               <span class="link-text">Create User</span>
+               <span class="link-text">New Maintenance</span>
               </a>
             </li>
           </ul>
-
+ <P class="sidenav-label">Messages</P>
+          <ul>
+            <li>
+              <a href="#Messages">
+                <i class="fa-solid fa-comments"></i>
+                <span class="link-text">Messages</span>
+              </a>
+            </li>
+          </ul>
         </div>
 
         <div class="sidenav-footer">
@@ -110,56 +122,247 @@
 
       <!-- CONTENT -->
       <div class="content">
+<!----------------------------------------------------section1: All Maintenance -------------------------------->
+<section id="AllMaintenance" class="page">
 
-        <!--ALL USERS PAGE -->
-        <section id="users" class="page">
-          <div class="page-header  d-flex flex-row justify-content-between">
+  <div class="page-header">
+    <div class="text-header">
+      <h1 class="page-title">Maintenance Records</h1>
+      <p class="page-sub ps-2">View and manage all incubator maintenance logs</p>
+    </div>
+  </div>
 
-        section1
+  <div class="table-card">
+    <div class="table-header">
+      <div class="table-title">
+        <i class="fa-solid fa-screwdriver-wrench"></i> All Maintenance
+      </div>
+      <div class="table-header-bottom d-flex gap-3 align-items-center">
+        <div class="search-wrap">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input class="search-inp" id="mntSearchInp" type="text" placeholder="Search..." />
+        </div>
+        <select class="filter-select" id="mntStatusFilter">
+          <option value="all">All Status</option>
+          <option value="Pending">Pending</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Completed">Completed</option>
+          <option value="Scheduled">Scheduled</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="table-scroll">
+      <table class="mnt-table">
+        <thead>
+          <tr>
+            <th>Maintenance ID</th>
+            <th>Incubator ID</th>
+            <th>Engineer</th>
+            <th>Issue</th>
+            <th>Maint. Date</th>
+            <th>Next Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="mntTable"></tbody>
+      </table>
+    </div>
+
+    <div class="pagination mt-3">
+      <div class="pg-info my-3" id="mntPgInfo"></div>
+      <div class="pg-btns">
+        <button class="pg-btn" id="mntPgFirst"><i class="fa-solid fa-angles-left"></i></button>
+        <button class="pg-btn" id="mntPgPrev"><i class="fa-solid fa-angle-left"></i></button>
+        <div id="mntPages" class="pages"></div>
+        <button class="pg-btn" id="mntPgNext"><i class="fa-solid fa-angle-right"></i></button>
+        <button class="pg-btn" id="mntPgLast"><i class="fa-solid fa-angles-right"></i></button>
+      </div>
+    </div>
+
+    <div class="mob-cards" id="mntMobCards"></div>
+  </div>
+
+</section>
+
+<!----------------------------------------------------section2: Create Maintenance -------------------------------->
+<section id="NewMaintenance" class="page">
+
+  <div class="page-header">
+    <div class="text-header">
+      <h1 class="page-title">New Maintenance Record</h1>
+      <p class="page-sub ps-2">Log a new incubator maintenance or repair</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">
+        <i class="fa-solid fa-screwdriver-wrench"></i> Maintenance Form
+      </div>
+    </div>
+    <div class="card-body">
+      <form id="mntForm">
+        <div class="fg fg-2">
+
+          <div class="sec-div">Identifiers</div>
+
+          <div class="fgrp">
+            <label class="flbl" for="mntIncubatorId">Incubator ID <span>*</span></label>
+            <input id="mntIncubatorId" class="finp" type="text"  required>
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="mntUserId">Engineer ID <span>*</span></label>
+            <input id="mntUserId" class="finp" type="text"  required>
+          </div>
+
+          <div class="sec-div">Maintenance Info</div>
+
+          <div class="fgrp fg-full">
+            <label class="flbl" for="mntIssue">Issue Description <span>*</span></label>
+            <textarea id="mntIssue" class="ftxt"  required></textarea>
+          </div>
+
+          <div class="fgrp fg-full">
+            <label class="flbl" for="mntAction">Action Taken <span>*</span></label>
+            <textarea id="mntAction" class="ftxt" ></textarea>
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="mntDate">Maintenance Date <span>*</span></label>
+            <input id="mntDate" class="finp" type="date" required>
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="mntNextDate">Next Maintenance Date</label>
+            <input id="mntNextDate" class="finp" type="date">
+          </div>
+
+          <div class="fgrp">
+            <label class="flbl" for="mntStatus">Status <span>*</span></label>
+            <select id="mntStatus" class="fsel" onchange="colorMntSel(this)">
+              <option value="">Select status</option>
+              <option>Pending</option>
+              <option>In Progress</option>
+              <option>Completed</option>
+              <option>Scheduled</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn-sec" onclick="this.closest('form').reset(); document.querySelectorAll('.fsel').forEach(s => s.className='fsel');">
+            <i class="fa-solid fa-rotate-left"></i> Clear
+          </button>
+          <button type="submit" class="btn-primary">
+            <i class="fa-solid fa-floppy-disk"></i> Save Record
+          </button>
+        </div>
+
+        <div class="msg-ok" id="mntMsg">
+          <i class="fa-solid fa-circle-check"></i> Maintenance record saved successfully!
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</section>
+
+  <!----------------------------------------------------section5: Messages -------------------------------->
+
+        <section id="Messages" class="page">
+
+          <div class="page-header">
+            <div class="text-header">
+              <h1 class="page-title">Messages</h1>
+              <p class="page-sub ps-2">View and manage your inbox and sent messages</p>
+            </div>
+          </div>
+
+          <!-- ── Chat Layout ── -->
+          <div class="msg-layout">
+
+            <!-- LEFT: Conversations list -->
+            <div class="msg-sidebar">
+
+              <div class="msg-sb-head">
+                <div class="table-title" style="font-size:13px;">
+                  <i class="fa-solid fa-inbox"></i> Inbox
+                </div>
+                <div class="msg-search-wrap">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input class="msg-search-inp" id="msgSearchInp" type="text" placeholder="Search..." />
+                </div>
+                <div style="display:flex; gap:6px; margin-top:10px; flex-wrap:wrap;">
+                  <button class="msg-filter-btn active" data-filter="all">All</button>
+                  <button class="msg-filter-btn" data-filter="unread">Unread</button>
+                  <button class="msg-filter-btn" data-filter="sent">Sent</button>
+                </div>
+              </div>
+
+              <div class="msg-conv-list" id="msgConvList">
+                <!-- rendered by JS -->
+              </div>
+
+            </div>
+
+            <!-- RIGHT: Message thread -->
+            <div class="msg-thread-area">
+
+              <!-- Empty state -->
+              <div class="msg-empty" id="msgEmpty">
+                <i class="fa-solid fa-comments"></i>
+                <p>Select a conversation to view messages</p>
+              </div>
+
+              <!-- Thread -->
+              <div class="msg-thread" id="msgThread" style="display:none;">
+
+                <div class="msg-thread-head" id="msgThreadHead">
+                  <!-- name + status filled by JS -->
+                </div>
+
+                <div class="msg-bubbles" id="msgBubbles">
+                  <!-- bubbles rendered by JS -->
+                </div>
+
+                <!-- Compose -->
+                <div class="msg-compose">
+                  <textarea class="msg-compose-inp" id="msgComposeInp" placeholder="Type your message..."
+                    rows="1"></textarea>
+                  <button class="msg-send-btn" id="msgSendBtn" title="Send">
+                    <i class="fa-solid fa-paper-plane"></i>
+                  </button>
+                </div>
+
+              </div>
+
+            </div>
 
           </div>
 
-      
         </section>
 
-        <section id="create" class="page hidden">
-
-          <div class="page-header mb-3 d-flex flex-row  ">
-                   section2
-
-            </div>
-         
-
-         
-
-        </section>
-
-      </div> <!-- end .content -->
+        </div> <!-- end .content -->
 
     </div><!-- end .adminpage -->
+    <!-- Details Modal -->
+<div class="modal fade" id="mntDetailsModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Maintenance Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="mntDetailsBody"></div>
+    </div>
+  </div>
+</div>
 
-
-
-
-
-
-
-
-    </div> <!-- end adminpage -->
-
-     <!-- ════════ BOTTOM NAV ════════ -->
-  <nav class="bottom-nav" aria-label="Mobile navigation">
-    <button class="bn-item active" data-page="users">
-      <i class="fa-solid fa-users"></i>
-      <span>Users</span>
-      <div class="bn-pip"></div>
-    </button>
-    <button class="bn-item" data-page="create">
-      <i class="fa-solid fa-user-plus"></i>
-      <span>Create</span>
-      <div class="bn-pip"></div>
-    </button>
-  </nav>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"

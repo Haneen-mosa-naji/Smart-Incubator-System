@@ -146,12 +146,12 @@ document.querySelectorAll(".sidenav a")
 
 const user = {
 
-  name: "H.O.M.Al-Hussemy",
+  name: "A.A.M.Omary",
 
   namefull:
-    "Hossam Omar Mohammed Al-Hussemy",
+    "Alaa Ahmad Mohammed Omary",
 
-  role: "Doctor"
+  role: "Nurse"
 
 };
 
