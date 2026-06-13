@@ -393,7 +393,7 @@ function renderHourlyReportsMobileCards(reports) {
 // ================= HOURLY PAGINATION =================
 
 let hrCurrentPage = 1;
-const hrPerPage = 10;
+const hrPerPage = 6;
 let hrTotalPagesGlobal = 1;
 
 function renderHourlyTable() {
@@ -416,6 +416,9 @@ function renderHourlyTable() {
       report.child_id.toLowerCase().includes(searchValue) ||
       report.nurse_name.toLowerCase().includes(searchValue) ||
       report.nurse_id.toLowerCase().includes(searchValue)
+      ||
+      report.report_date.toLowerCase().includes(searchValue) ||
+report.report_time.toLowerCase().includes(searchValue)
     );
   }
 
@@ -494,7 +497,8 @@ renderHourlyTable();
 
 function showHourlyReportDetailsByObject(report) {
   const body = document.getElementById("reportDetailsBody");
-
+document.getElementById("reportDetailsTitle").textContent =
+  "Hourly Report Details";
   body.innerHTML = `
     <div class="report-details-grid">
 

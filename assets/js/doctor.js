@@ -480,7 +480,6 @@ function renderFullReports(reports) {
   renderFullReportsMobileCards(reports);
 }
 
-renderFullReports(fullReports);
 // =================  =================
 
 function showReportDetails(reportId) {
@@ -497,7 +496,8 @@ function showReportDetails(reportId) {
 
 function showReportDetailsByObject(report) {
   const body = document.getElementById("reportDetailsBody");
-
+document.getElementById("reportDetailsTitle").textContent =
+  "Medical Report Details";
   body.innerHTML = `
     <div class="report-details-grid">
 
@@ -621,7 +621,7 @@ function renderFullReportsMobileCards(reports) {
 
 // ================= PAGINATION BUTTONS =================
 let currentPage = 1;
-const perPage = 10;
+const perPage =6;
 let totalPagesGlobal = 1;
 renderTable();
 
@@ -645,7 +645,9 @@ function renderTable() {
       report.child_id.toLowerCase().includes(searchValue) ||
       report.nurse_name.toLowerCase().includes(searchValue) ||
       report.nurse_id.toLowerCase().includes(searchValue) ||
-      report.report_type.toLowerCase().includes(searchValue)
+      report.report_type.toLowerCase().includes(searchValue)||
+      report.report_date.toLowerCase().includes(searchValue) ||
+report.report_time.toLowerCase().includes(searchValue)
     );
   }
 

@@ -237,7 +237,7 @@ let children = [
 // ================= CHILD PAGINATION =================
 
 let childCurrentPage = 1;
-const childPerPage = 10;
+const childPerPage = 6;
 let childTotalPagesGlobal = 1;
 
 
@@ -345,7 +345,8 @@ function renderChildTable() {
     filteredChildren = filteredChildren.filter(child =>
       child.child_id.toLowerCase().includes(searchValue) ||
       child.child_name.toLowerCase().includes(searchValue) ||
-      child.incubator_id.toLowerCase().includes(searchValue)
+      child.incubator_id.toLowerCase().includes(searchValue)||
+       child.blood_type.toLowerCase().includes(searchValue)
     );
   }
 
@@ -397,7 +398,8 @@ function showChildDetails(childId) {
 
 function showChildDetailsByObject(child) {
   const body = document.getElementById("reportDetailsBody");
-
+document.getElementById("reportDetailsTitle").textContent =
+  "Child Data Details";
   body.innerHTML = `
     <div class="report-details-grid">
 

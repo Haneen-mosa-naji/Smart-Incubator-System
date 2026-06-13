@@ -139,7 +139,7 @@ document.querySelectorAll(".sidenav a")
 
 const user = {
 
-  name: "o.H.M.Omary",
+  name: "O.H.M.Omary",
 
   namefull:
     "Omar Hsssn Mohammed Omary",
@@ -461,7 +461,7 @@ function deleteMnt(id) {
 // ================= PAGINATION =================
 
 let mntCurrentPage = 1;
-const mntPerPage   = 10;
+const mntPerPage   = 6;
 let mntTotalPages  = 1;
 
 function renderMntTable() {

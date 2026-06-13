@@ -1,6 +1,6 @@
 let currentArchiveType = "full";
 let archiveCurrentPage = 1;
-const archivePerPage = 10;
+const archivePerPage = 6;
 
 function openArchive(type) {
   currentArchiveType = type;
@@ -58,7 +58,7 @@ function renderArchive() {
   tbody.innerHTML = "";
 
   if (currentArchiveType === "full") {
-    title.textContent = "Archived Full Reports";
+    title.textContent = "Archived medical Reports";
 
     thead.innerHTML = `
       <tr>
@@ -84,7 +84,7 @@ function renderArchive() {
           <td>${r.report_date}</td>
           <td>${r.report_time}</td>
           <td class="actions-cell">
-            <button class="act-btn view" onclick="showReportDetails('${r.report_id}')">
+            <button class="act-btn view" onclick="showArchiveFullDetails('${r.report_id}')">
               <i class="fa-solid fa-eye"></i>
             </button>
             <button class="act-btn pdf" onclick="openReportPDF('${r.report_id}')">
@@ -123,7 +123,7 @@ function renderArchive() {
           <td>${r.report_date || r.date}</td>
           <td>${r.report_time || r.time}</td>
           <td class="actions-cell">
-            <button class="act-btn view" onclick="showHourlyDetails('${r.hourly_report_id}')">
+            <button class="act-btn view" onclick="showHourlyReportDetails('${r.hourly_report_id}')">
               <i class="fa-solid fa-eye"></i>
             </button>
             <button class="act-btn pdf" onclick="openHourlyPDF('${r.hourly_report_id}')">
@@ -203,8 +203,8 @@ function archiveReport(reportId) {
   fullReports = fullReports.filter(
     r => r.report_id !== reportId
   );
-
-  renderFullReports(fullReports);
+  renderTable();
+renderArchive();
 }
 
 function archiveHourlyReport(reportId) {
@@ -218,6 +218,7 @@ function archiveHourlyReport(reportId) {
     archive_type: "hourly",
     data: report
   });
+
 
   hourlyReports = hourlyReports.filter(
     r => r.hourly_report_id !== reportId
@@ -385,3 +386,79 @@ function renderArchiveMobileCards(items) {
     }).join("");
   }
 }
+
+function showArchiveFullDetails(reportId) {
+  const item = archivedItems.find(
+    item =>
+      item.archive_type === "full" &&
+      item.data.report_id === reportId
+  );
+
+  if (!item) return;
+
+  showReportDetailsByObject(item.data);
+}
+
+
+
+function showHourlyReportDetails(reportId) {
+  const report =
+    hourlyReports.find(r => r.hourly_report_id === reportId) ||
+    archivedItems.find(
+      item =>
+        item.archive_type === "hourly" &&
+        item.data.hourly_report_id === reportId
+    )?.data;
+
+  if (!report) return;
+
+  showHourlyReportDetailsByObject(report);
+}
+
+
+function showHourlyReportDetailsByObject(report) {
+  const body = document.getElementById("reportDetailsBody");
+document.getElementById("reportDetailsTitle").textContent =
+  "Hourly Report Details";
+  body.innerHTML = `
+    <div class="report-details-grid">
+
+      <div><span class="label">Hourly Report ID : </span><span class="value">${report.hourly_report_id}</span></div>
+      <div><span class="label">Status : </span><span class="value">${getHrBadge(report.status)}</span></div>
+
+      <div><span class="label">Child Name : </span><span class="value">${report.child_name}</span></div>
+      <div><span class="label">Child ID : </span><span class="value">${report.child_id}</span></div>
+
+      <div><span class="label">Nurse Name : </span><span class="value">${report.nurse_name}</span></div>
+      <div><span class="label">Nurse ID : </span><span class="value">${report.nurse_id}</span></div>
+
+      <div><span class="label">Temperature : </span><span class="value">${report.temperature} °C</span></div>
+      <div><span class="label">Humidity : </span><span class="value">${report.humidity}%</span></div>
+
+      <div><span class="label">Oxygen Level : </span><span class="value">${report.oxygen_level}%</span></div>
+      <div><span class="label">Heart Rate : </span><span class="value">${report.heart_rate}</span></div>
+
+      <div><span class="label">Weight : </span><span class="value">${report.weight} g</span></div>
+      <div><span class="label">Date : </span><span class="value">${report.date}</span></div>
+
+      <div><span class="label">Time : </span><span class="value">${report.time}</span></div>
+
+      <div class="full-row report-section">
+        <h6>Actions Taken</h6>
+        <p>${report.actions_taken}</p>
+      </div>
+
+      <div class="full-row report-section">
+        <h6>Recommendations</h6>
+        <p>${report.recommendations}</p>
+      </div>
+
+    </div>
+  `;
+
+  new bootstrap.Modal(
+    document.getElementById("reportDetailsModal")
+  ).show();
+}
+
+

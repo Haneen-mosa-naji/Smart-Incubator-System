@@ -428,49 +428,6 @@ let fullReports = [
 }
 ];
 
-
-// =================  =================
-
-function renderFullReports(reports) {
-  const tbody = document.getElementById("fullReportsTable");
-
-  tbody.innerHTML = "";
-
-  reports.forEach(report => {
-    tbody.innerHTML += `
-      <tr>
-        <td>${report.report_id}</td>
-        <td>${report.child_name}</td>
-      
-        <td>${report.nurse_name}</td>
-      
-       <td>${report.report_type}</td>
-        <td>${report.report_date}</td>
-        <td>${report.report_time}</td>
-       <td class="actions-cell">
-
-  <button class="act-btn view" onclick="showReportDetails('${report.report_id}')" title="View">
-    <i class="fa-solid fa-eye"></i>
-  </button>
-
- <button class="act-btn pdf" onclick="openReportPDF('${report.report_id}')" title="Open PDF">
-  <i class="fa-solid fa-file-pdf"></i>
-</button>
-
-  <button class="act-btn archive" onclick="archiveReport('${report.report_id}')" title="Archive">
-    <i class="fa-solid fa-box-archive"></i>
-  </button>
-
-</td>
-      </tr>
-    `;
-  });
-  renderFullReportsMobileCards(reports);
-}
-
-renderFullReports(fullReports);
-// =================  =================
-
 function showReportDetails(reportId) {
   const report = fullReports.find(
     r => r.report_id === reportId
@@ -485,7 +442,8 @@ function showReportDetails(reportId) {
 
 function showReportDetailsByObject(report) {
   const body = document.getElementById("reportDetailsBody");
-
+document.getElementById("reportDetailsTitle").textContent =
+  "Medical Report Details";
   body.innerHTML = `
     <div class="report-details-grid">
 
@@ -607,9 +565,51 @@ function renderFullReportsMobileCards(reports) {
   `).join("");
 }
 
+// =================  =================
+
+function renderFullReports(reports) {
+  const tbody = document.getElementById("fullReportsTable");
+
+  tbody.innerHTML = "";
+
+  reports.forEach(report => {
+    tbody.innerHTML += `
+      <tr>
+        <td>${report.report_id}</td>
+        <td>${report.child_name}</td>
+      
+        <td>${report.nurse_name}</td>
+      
+       <td>${report.report_type}</td>
+        <td>${report.report_date}</td>
+        <td>${report.report_time}</td>
+       <td class="actions-cell">
+
+  <button class="act-btn view" onclick="showReportDetails('${report.report_id}')" title="View">
+    <i class="fa-solid fa-eye"></i>
+  </button>
+
+ <button class="act-btn pdf" onclick="openReportPDF('${report.report_id}')" title="Open PDF">
+  <i class="fa-solid fa-file-pdf"></i>
+</button>
+
+  <button class="act-btn archive" onclick="archiveReport('${report.report_id}')" title="Archive">
+    <i class="fa-solid fa-box-archive"></i>
+  </button>
+
+</td>
+      </tr>
+    `;
+  });
+  renderFullReportsMobileCards(reports);
+}
+
+// =================  =================
+
+
 // ================= PAGINATION BUTTONS =================
 let currentPage = 1;
-const perPage = 10;
+const perPage = 6;
 let totalPagesGlobal = 1;
 renderTable();
 
@@ -634,6 +634,9 @@ function renderTable() {
       report.nurse_name.toLowerCase().includes(searchValue) ||
       report.nurse_id.toLowerCase().includes(searchValue) ||
       report.report_type.toLowerCase().includes(searchValue)
+      ||
+      report.report_date.toLowerCase().includes(searchValue) ||
+report.report_time.toLowerCase().includes(searchValue)
     );
   }
 

@@ -105,7 +105,7 @@ function generateObjectId() {
 
   return id;
 }
-function generateUsers(count = 100) {
+function generateUsers(count = 47) {
   return Array.from({ length: count }, (_, i) => ({
     user_id: generateObjectId(),
     full_name: `User ${i + 1} Test Example`,
@@ -120,7 +120,7 @@ function generateUsers(count = 100) {
   }));
 }
 
-const users = generateUsers(100);
+const users = generateUsers(47);
 
 
 // ================= TABLE =================
@@ -130,7 +130,7 @@ const searchInp = document.getElementById("searchInp");
 const roleFilter = document.getElementById("roleFilter");
 
 let currentPage = 1;
-const perPage = 10;
+const perPage = 6;
 let totalPagesGlobal = 1;
   renderTable();
 
